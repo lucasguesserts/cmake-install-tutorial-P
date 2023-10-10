@@ -27,8 +27,12 @@ CPMAddPackage(
 )
 
 # local dependencies
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
-find_package(Q REQUIRED)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/")
+set(Q_VERSION 0.0.0)
+find_package(Q
+    ${Q_VERSION} EXACT
+    REQUIRED
+)
 
 # setup library
 set(PROJECT_INCLUDE_DIRECTORY "include")
@@ -55,7 +59,7 @@ set_target_properties(
 target_link_libraries(
     ${PROJECT_NAME}
     PRIVATE fmt::fmt
-    PRIVATE Q::Q
+    PUBLIC Q::Q
 )
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
@@ -115,6 +119,12 @@ install(
     FILES
         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+    DESTINATION ${CMAKE_CONFIG_INSTALL_DIR}
+)
+
+# Find dependencies
+install(
+    FILES ${CMAKE_SOURCE_DIR}/cmake/FindQ.cmake
     DESTINATION ${CMAKE_CONFIG_INSTALL_DIR}
 )
 
