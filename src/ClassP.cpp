@@ -1,15 +1,17 @@
 #include "P/ClassP.hpp"
 
-#include <iostream>
+#include <fmt/core.h>
 
 namespace P {
 
-ClassP::ClassP() {}
+ClassP::ClassP() {
+    fmt::print("{:s} constructor!\n", "ClassP");
+}
 
 ClassP::~ClassP() {}
 
 void ClassP::print() {
-    std::cout << "ClassP" << std::endl;
+    fmt::print("a number: {:d}\n", 10);
 }
 
 } // namespace
