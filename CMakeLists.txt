@@ -27,7 +27,7 @@ CPMAddPackage(
 )
 
 # local dependencies
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
 set(Q_VERSION 0.0.0)
 find_package(Q
     ${Q_VERSION} EXACT
@@ -124,7 +124,7 @@ install(
 
 # Find dependencies
 install(
-    FILES ${CMAKE_SOURCE_DIR}/cmake/FindQ.cmake
+    FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindQ.cmake
     DESTINATION ${CMAKE_CONFIG_INSTALL_DIR}
 )
 
