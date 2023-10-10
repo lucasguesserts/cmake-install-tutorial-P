@@ -1,0 +1,11 @@
+# temporary
+*foo*
+*goo*
+*hoo*
+
+# c++
+build/
+.cache/
+
+# python
+venv
