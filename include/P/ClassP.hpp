@@ -2,6 +2,7 @@
 #define CLASS_P_HPP_
 
 #include <Q/ClassQ.hpp>
+#include <fmt/core.h>
 
 namespace P {
 

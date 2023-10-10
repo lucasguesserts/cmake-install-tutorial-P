@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 
 project(
     P
-    VERSION 0.2.0
+    VERSION 0.3.0
     LANGUAGES CXX
 )
 
@@ -19,10 +19,11 @@ endif()
 
 # dependencies
 include(cmake/get_cpm.cmake)
+set(FMT_REQUIRED_VERSION 10.1.1)
 CPMAddPackage(
     NAME fmt
     GITHUB_REPOSITORY fmtlib/fmt
-    GIT_TAG 10.1.1
+    GIT_TAG ${FMT_REQUIRED_VERSION}
     OPTIONS "CMAKE_CXX_FLAGS -fPIC"
 )
 
@@ -58,7 +59,7 @@ set_target_properties(
 )
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE fmt::fmt
+    PUBLIC fmt::fmt
     PUBLIC Q::Q
 )
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
