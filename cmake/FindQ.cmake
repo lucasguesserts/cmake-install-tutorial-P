@@ -52,6 +52,7 @@ find_library(
 
 mark_as_advanced(Q_INCLUDE_DIR Q_LIBRARY)
 
+include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(
     Q
     REQUIRED_VARS
