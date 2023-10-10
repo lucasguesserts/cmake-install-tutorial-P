@@ -26,6 +26,14 @@ CPMAddPackage(
     GIT_TAG ${FMT_REQUIRED_VERSION}
     OPTIONS "CMAKE_CXX_FLAGS -fPIC"
 )
+CPMAddPackage(
+  NAME nlohmann_json
+  VERSION 3.11.2
+  GITHUB_REPOSITORY nlohmann/json
+  OPTIONS
+    "JSON_BuildTests OFF"
+    "JSON_Install ON"
+)
 
 # local dependencies
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
@@ -61,6 +69,7 @@ target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC fmt::fmt
     PUBLIC Q::Q
+    PUBLIC nlohmann_json::nlohmann_json
 )
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
