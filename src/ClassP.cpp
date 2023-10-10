@@ -2,6 +2,7 @@
 
 #include <Q/ClassQ.hpp>
 #include <fmt/core.h>
+#include <nlohmann/json.hpp>
 
 namespace P {
 
@@ -12,8 +13,9 @@ ClassP::ClassP() : Q::ClassQ() {
 
 ClassP::~ClassP() {}
 
-void ClassP::print() {
+void ClassP::print(const nlohmann::json &json) {
   Q::ClassQ::print();
+  fmt::print("{:s}\n", json.dump(4));
   fmt::print("a number: {:d}\n", 10);
   return;
 }

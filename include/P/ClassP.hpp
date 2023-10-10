@@ -3,16 +3,17 @@
 
 #include <Q/ClassQ.hpp>
 #include <fmt/core.h>
+#include <nlohmann/json.hpp>
 
 namespace P {
 
-class ClassP :public Q::ClassQ {
+class ClassP : public Q::ClassQ {
 public:
-    ClassP();
-    ~ClassP();
-    virtual void print();
+  ClassP();
+  ~ClassP();
+  virtual void print(const nlohmann::json &json);
 };
 
-} // namespace
+} // namespace P
 
 #endif
